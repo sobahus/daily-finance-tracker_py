@@ -21,4 +21,4 @@ transaksi = [
     },
 ]
 
-daftar_kategori = set()
+daftar_kategori = set(["Makanan", "Minuman", "Transportasi", "Paralayang"])

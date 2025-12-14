@@ -2,6 +2,7 @@ from services.input_transaksi import input_transaksi
 from services.tampilan_transaksi import tampilan_transaksi
 from services.hapus_transaksi import hapus_transaksi
 from services.laporan_transaksi import laporan_pengeluaran_boros
+from services.tampilan_per_kategori import tampilan_per_kategori
 
 def main():
     while True:
@@ -27,7 +28,7 @@ def main():
             case 3:
                 hapus_transaksi()
             case 4:
-                print("Menghitung total per kategori...")
+                tampilan_per_kategori()
             case 5:
                laporan_pengeluaran_boros()
             case 6:

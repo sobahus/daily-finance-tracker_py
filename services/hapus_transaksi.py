@@ -16,10 +16,3 @@ def hapus_transaksi():
             break
         else:
             print("Nomor pada daftar transaksi tidak valid, Silahkan masukkan nomor yang benar.")
-
-    
-    
-        
-        
-    
-        
