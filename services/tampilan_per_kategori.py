@@ -1,13 +1,21 @@
-from data.storage import daftar_kategori
+from data.storage import transaksi, daftar_kategori
 
 def tampilan_per_kategori():
     if not daftar_kategori:
         print("Belum ada kategori yang tersedia.")
         return
     
-    # Looping untuk menampilkan semua data kategori
-    print("\nDaftar Kategori Transaksi:")
-    for idx, kategori in enumerate(daftar_kategori, start=1):
-        print(f"{idx}. {kategori}") 
-    print()   
+    print("\n=== Transaksi dikelompokkan per Kategori ===\n")
     
+    for ktx in sorted(daftar_kategori):
+        print(f"- {ktx}")
+        ditemukan = False
+        
+        for trx in transaksi:
+            if trx["kategori"] == ktx:
+                print(f"  • {trx['tanggal']} | Rp {trx['jumlah']}")
+                ditemukan = True
+
+        if not ditemukan:
+            print("  (Tidak ada transaksi pada kategori ini)") 
+        print()
