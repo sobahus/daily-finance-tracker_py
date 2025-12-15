@@ -1,18 +1,17 @@
 from services.tambah_transaksi import tambah_transaksi
-from data.storage import daftar_kategori
 
 def input_transaksi():      
     
     while True:
-        kategori = input("Masukkan Kategori: ")
-        if kategori:
+        input_kategori = input("Masukkan Kategori: ")
+        if input_kategori:
             break
         print("Maaf, field kategori tidak boleh kosong.")
         
     while True:
         try:
-            jumlah = int(input("Masukkan Jumlah: "))
-            if jumlah > 0:
+            input_jumlah = int(input("Masukkan Jumlah: "))
+            if input_jumlah > 0:
                 break
             else:
                 print("Maaf, Jumlah harus lebih dari 0 dan tidak boleh Kosong.")
@@ -20,17 +19,16 @@ def input_transaksi():
             print("Maaf Jumlah harus berupa angka dan tidak boleh kosong.")
 
     while True: 
-        tanggal = input("Masukkan Tanggal (format: DD/MM/YYYY): ")
-        if tanggal:
+        input_tanggal = input("Masukkan Tanggal (format: DD-MM-YYYY): ")
+        if input_tanggal:
             break
         print("Maaf, field tanggal tidak boleh kosong.")
     
     try:
-        tambah_transaksi(kategori, jumlah, tanggal)
-        daftar_kategori.add(kategori)
+        tambah_transaksi(input_kategori, input_jumlah, input_tanggal)
         
         print()
-        print("=== Transaksi telah berhasil ditambahkan. ===")
+        print("Transaksi telah berhasil ditambahkan.")
         print() 
         
     except Exception as err:

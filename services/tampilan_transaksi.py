@@ -3,7 +3,7 @@ from data.storage import transaksi
 def tampilan_transaksi():
     kategori = ["Kategori", "Jumlah", "Tanggal"]
 
-    print("====================== Daftar Transaksi =====================\n")
+    print("===================== Daftar Transaksi =======================\n")
     
     # Menampilkan Tabel dengan header dengan kolom
     print("No".ljust(10), end = "")
@@ -20,4 +20,4 @@ def tampilan_transaksi():
             print(str(row[key]).ljust(20), end = "")
         print()
     print()
-    print()
+    print("=" * 62)
