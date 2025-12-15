@@ -203,14 +203,3 @@ python main.py
 
 - Python 3.10+ (menggunakan `match-case` statement)
 - Tidak ada library external yang dibutuhkan
-
----
-
-## Author
-
-Tugas UAS - Algoritma dan Pemrograman
-
-- main.py : file utama buat eksekusi dan tempat penaruhan modul
-- data/ : tempat menyimpan data-data seperti list, tupple, dll
-- services/ : tempat untuk file yang menyimpan logic
-- utils/ : tempan untuk menyimpan sebuah fungsi modul kecil pembantu, seperti tampilan(UI)
