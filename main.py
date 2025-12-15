@@ -1,9 +1,9 @@
 from services.input_transaksi import input_transaksi
-from services.tampilan_transaksi import tampilan_transaksi
-from services.hapus_transaksi import hapus_transaksi
 from services.edit_transaksi import edit_transaksi
-from services.laporan_transaksi import laporan_pengeluaran_boros
+from services.hapus_transaksi import hapus_transaksi
+from services.tampilan_transaksi import tampilan_transaksi
 from services.tampilan_per_kategori import tampilan_per_kategori
+from services.laporan_transaksi import laporan_pengeluaran_boros
 
 def main():
     

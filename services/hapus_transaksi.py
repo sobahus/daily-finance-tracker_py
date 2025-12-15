@@ -1,7 +1,6 @@
 from data.storage import transaksi, daftar_kategori
 from services.tampilan_transaksi import tampilan_transaksi
 
-
 def hapus_transaksi():
     
     tampilan_transaksi()
