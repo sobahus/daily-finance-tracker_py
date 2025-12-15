@@ -6,8 +6,18 @@ from services.laporan_transaksi import laporan_pengeluaran_boros
 from services.tampilan_per_kategori import tampilan_per_kategori
 
 def main():
+    
+    print('''                                                
+  ▄▄▄              ▄▄                            
+ █▀██  ██  ██▀▀     ██                           
+   ██  ██  ██       ██             ▄             
+   ██  ██  ██ ▄█▀█▄ ██ ▄███▀ ▄███▄ ███▄███▄ ▄█▀█▄
+   ██▄ ██▄ ██ ██▄█▀ ██ ██    ██ ██ ██ ██ ██ ██▄█▀
+   ▀████▀███▀▄▀█▄▄▄▄██▄▀███▄▄▀███▀▄██ ██ ▀█▄▀█▄▄▄                                        
+    ''')
+    
     while True:
-        print("\n========== Aplikasi Manajemen Keuangan Harian ===========")   
+        print("========== Aplikasi Manajemen Keuangan Harian ===========\n")   
         print("1. Tambah Transaksi") 
         print("2. Edit Transaksi") 
         print("3. Hapus Transaksi") 
