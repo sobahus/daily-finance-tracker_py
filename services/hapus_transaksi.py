@@ -5,18 +5,24 @@ def hapus_transaksi():
     
     tampilan_transaksi()
     print()
-    
-    nomor = int(input("Masukkan nomor dari Daftar Transaksi yang ingin dihapus: "))
-    
+        
     while True:
-        if nomor:
-            kategori_dihapus = transaksi[nomor - 1]['kategori']
-            del transaksi[nomor - 1]
+        try:
+            nomor = int(input("Masukkan nomor dari Daftar Transaksi yang ingin dihapus: "))
 
-            if not any(t['kategori'] == kategori_dihapus for t in transaksi):
-                daftar_kategori.remove(kategori_dihapus)
-            
-            print("Telah berhasil dihapus.\n")
-            break
-        else:
-            print("Nomor pada daftar transaksi tidak valid, Silahkan masukkan nomor yang benar.")
+            if nomor >= 1 and nomor <= len(transaksi):
+                kategori_dihapus = transaksi[nomor - 1]['kategori']
+                del transaksi[nomor - 1]
+                
+                if not any(trx["kategori"] == kategori_dihapus for trx in transaksi):
+                    daftar_kategori.remove(kategori_dihapus)
+                else:
+                    pass
+                
+                print(f"kategori: {kategori_dihapus} dari Daftar Transaksi Telah berhasil dihapus.\n")
+                break
+            else:
+                print("Nomor tidak valid, silahkan coba lagi.\n")
+                
+        except ValueError:
+            print("Field ini tidak boleh kosong dan Harus berupa angka.\n") 

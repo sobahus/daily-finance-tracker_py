@@ -12,4 +12,4 @@ def tampilan_per_kategori():
         
         for trx in transaksi:
             if trx["kategori"] == ktx:
-                print(f"  • Tanggal: {trx['tanggal']} | Jumlah: Rp {trx['jumlah']}")
+                print(f"  • Tanggal: {trx['tanggal']} | Jumlah: Rp {trx['jumlah']}\n")
