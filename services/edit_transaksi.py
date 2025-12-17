@@ -1,20 +1,67 @@
 from data.storage import transaksi
 from services.tampilan_transaksi import tampilan_transaksi
-
+    
+def validasi_input_transaksi(input_validasi, nilai_saat_ini, tipe_data=str):
+    while True:
+        input_validasi = input(f"{input_validasi}baru (tekan Enter untuk tetap menyimpan data lama) :")
+        user_input = input_validasi.strip()
+        
+        if user_input == "":
+            return nilai_saat_ini
+        else:
+            try:
+                if tipe_data == int:
+                    return int(user_input)
+                else:
+                    return user_input
+                
+            except ValueError:
+                print("Input tidak valid!")
+    
 def edit_transaksi():
     
     tampilan_transaksi()
-    nomor = int(input("Masukkan nomor transaksi yang ingin diubah : "))
+    
+    while True:
+        try:
+            nomor = int(input("Masukkan nomor transaksi yang ingin diubah : "))
+        except ValueError:
+            print(f"Maaf, field ini tidak boleh kosong dan harus berupa angka.\n")
+            continue
+        
+        if 0 < nomor <= len(transaksi):
+            index = nomor - 1
+            
+            kategori_baru = validasi_input_transaksi("Masukkan kategori ", transaksi[index]["kategori"])
+            item_baru = validasi_input_transaksi("Masukkan item ", transaksi[index]["item"])
+            jumlah_baru = validasi_input_transaksi("Jumlah ", transaksi[index]["jumlah"], int)
+            harga_baru = validasi_input_transaksi("Harga satuan ", transaksi[index]["harga"], int)
+            tanggal_baru = validasi_input_transaksi("Masukkan tanggal DD-MM-YYYY ", transaksi[index]["tanggal"])
+            konfirmasi = input("Apakah yakin ingin mengubah transaksi ini? (y/n): ")
+            
+            try:
+                if kategori_baru != "":
+                    transaksi[index]["kategori"] = kategori_baru
+                
+                if item_baru != "":
+                    transaksi[index]["item"] = item_baru
+                
+                if jumlah_baru != "":
+                    transaksi[index]["jumlah"] = jumlah_baru
 
-    if 0 < nomor <= len(transaksi):
-        kategori_baru = input("Masukkan kategori baru: ")
-        jumlah_baru = int(input("Jumlah baru: "))
-        tanggal_baru = input("Masukkan tanggal baru DD-MM-YYYY: ")
-        
-        transaksi[nomor - 1]["kategori"] = kategori_baru
-        transaksi[nomor - 1]["jumlah"] = jumlah_baru
-        transaksi[nomor - 1]["tanggal"] = tanggal_baru
-        
-        print("Transaksi berhasil diperbarui.")
-    
-    
+                if harga_baru != "":
+                    transaksi[index]["harga"] = harga_baru
+
+                if tanggal_baru != "":
+                    transaksi[index]["tanggal"] = tanggal_baru
+                
+                if konfirmasi.lower() == 'y':
+                    print("\nTransaksi berhasil diperbarui.\n")
+                    tampilan_transaksi()
+                    return True
+                else:
+                    print("Perubahan dibatalkan.")
+                    return False
+                    
+            except ValueError:
+                print("Gagal memperbarui transaksi, Input tidak valid.")

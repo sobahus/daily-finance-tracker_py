@@ -16,8 +16,6 @@ def hapus_transaksi():
                 
                 if not any(trx["kategori"] == kategori_dihapus for trx in transaksi):
                     daftar_kategori.remove(kategori_dihapus)
-                else:
-                    pass
                 
                 print(f"kategori: {kategori_dihapus} dari Daftar Transaksi Telah berhasil dihapus.\n")
                 break

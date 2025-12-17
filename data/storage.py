@@ -9,7 +9,7 @@ transaksi = [
     {
     "kategori": "Makanan",
     "item": "Nasi Goreng",
-    "jumlah": 1,
+    "jumlah": 4,
     "harga": 20000,
     "tanggal": "14-12-2025"
     },
@@ -23,12 +23,10 @@ transaksi = [
     {
     "kategori": "Penginapan",
     "item": "Hotel",
-    "jumlah": 1,
-    "harga": 2000000,
+    "jumlah": 2,
+    "harga": 2000,
     "tanggal": "14-12-2025"
     },
 ]
 
 daftar_kategori = set(["Minuman", "Makanan", "Transportasi", "Penginapan"])
-
-list_total_per_item = []

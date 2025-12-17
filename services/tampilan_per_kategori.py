@@ -12,4 +12,5 @@ def tampilan_per_kategori():
         
         for trx in transaksi:
             if trx["kategori"] == ktx:
-                print(f"  • Tanggal: {trx['tanggal']} | Jumlah: Rp {trx['jumlah']}\n")
+                print(f"  •Item: {trx['item']} | Jumlah: {trx['jumlah']} | Harga Satuan: Rp.{trx['harga']} | tanggal: {trx['tanggal']}")
+                print(f"   Total Harga dari Kategori {trx["kategori"]}: Rp.{trx["jumlah"] * trx["harga"]}\n")

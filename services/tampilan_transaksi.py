@@ -1,7 +1,9 @@
-from data.storage import transaksi, list_total_per_item
+from data.storage import transaksi
 
 def tampilan_transaksi():
     kategori = ["Kategori", "item", "Jumlah", "Harga Satuan", "Total", "Tanggal"]
+    list_total_per_item = []
+    
 
     print("============================ Daftar Transaksi ==================================\n")
     
@@ -37,8 +39,6 @@ def tampilan_transaksi():
         print(str(row["tanggal"]), end="")
         print()
         
-
-
     # Menampilkan footer Table buat Hasil Total Semua
     print("-" * panjang_baris)
     print(f"Total Pengeluaran: Rp {sum(list_total_per_item)}")
