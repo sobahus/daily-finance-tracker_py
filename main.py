@@ -8,29 +8,29 @@ from services.laporan_transaksi import laporan_pengeluaran_boros
 def main():
     
     print('''                                                
-  ▄▄▄              ▄▄                            
- █▀██  ██  ██▀▀     ██                           
-   ██  ██  ██       ██             ▄             
-   ██  ██  ██ ▄█▀█▄ ██ ▄███▀ ▄███▄ ███▄███▄ ▄█▀█▄
-   ██▄ ██▄ ██ ██▄█▀ ██ ██    ██ ██ ██ ██ ██ ██▄█▀
-   ▀████▀███▀▄▀█▄▄▄▄██▄▀███▄▄▀███▀▄██ ██ ▀█▄▀█▄▄▄                                        
+      ▄▄▄              ▄▄                            
+     █▀██  ██  ██▀▀     ██                           
+       ██  ██  ██       ██             ▄             
+       ██  ██  ██ ▄█▀█▄ ██ ▄███▀ ▄███▄ ███▄███▄ ▄█▀█▄
+       ██▄ ██▄ ██ ██▄█▀ ██ ██    ██ ██ ██ ██ ██ ██▄█▀
+       ▀████▀███▀▄▀█▄▄▄▄██▄▀███▄▄▀███▀▄██ ██ ▀█▄▀█▄▄▄                                        
     ''')
     
     print("============ Aplikasi Manajemen Keuangan Harian =============\n")   
     while True:
         print("Menu :")
-        print("1. Tambah Transaksi") 
-        print("2. Edit Transaksi") 
-        print("3. Hapus Transaksi") 
-        print("4. Tampilkan Semua Transaksi") 
-        print("5. Tampilkan Transaksi per Kategori") 
-        print("6. Deteksi Pengeluaran Boros") 
-        print("7. Exit\n")
+        print(" 1. Tambah Transaksi") 
+        print(" 2. Edit Transaksi") 
+        print(" 3. Hapus Transaksi") 
+        print(" 4. Tampilkan Semua Transaksi") 
+        print(" 5. Tampilkan Transaksi per Kategori") 
+        print(" 6. Deteksi Pengeluaran Boros") 
+        print(" 7. Exit\n")
         
         try:
             pilihan = int(input("Pilih Opsi : "))
         except ValueError:
-            print("Maaf, pilih opsi yang tersedia.\n")
+            print("Field ini tidak boleh kosong dan harus berupa angka!\n")
             continue
             
         match pilihan:
