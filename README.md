@@ -327,7 +327,7 @@ Proyek ini dikembangkan oleh Kelompok 2:
 
 - **M. Sobahus Sururin Ni'am** - (NIM: 054)
 - **Atta Arrafi P.H.** - (NIM: 035)
-- **Zackaria Noza Alfarel** - (NIM: 034)
+- **Zackaria Noza Alfarel** - (NIM: 043)
 - **Khoirul Ikhsan Riadi** - (NIM: 025)
 
 ## Rencana Pengembangan Lanjutan Project
