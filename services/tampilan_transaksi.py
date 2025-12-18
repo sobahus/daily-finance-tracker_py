@@ -5,18 +5,16 @@ def tampilan_transaksi():
 
     list_total_per_item = []
 
-    print("============================ Daftar Transaksi ==================================\n")
-    
     # Menampilkan No di Header Tabel 
     panjang_baris = len(kategori) * 16 + 6
-    print("-" * panjang_baris)
+    print("=" * panjang_baris)
     print("No".ljust(6), end="")
     
     # Perulangan untuk menampilkan header tabel
     for item in kategori:
         print(item.ljust(16), end="")
     print()  
-    print("-" * panjang_baris)  
+    print("=" * panjang_baris)  
     
     # Menampilkan Tabel dengan row
     for (idx, row) in enumerate(transaksi, start=1):
@@ -40,6 +38,6 @@ def tampilan_transaksi():
         print()
         
     # Menampilkan footer Table buat Hasil Total Semua
-    print("-" * panjang_baris)
+    print("=" * panjang_baris)
     print(f"Total Pengeluaran: Rp {sum(list_total_per_item)}")
-    print("-" * panjang_baris)
+    print(f"{'=' * panjang_baris}\n")

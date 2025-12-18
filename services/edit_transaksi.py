@@ -39,12 +39,14 @@ def edit_transaksi():
                     
                     print("\nTransaksi berhasil diperbarui.\n")
                     tampilan_transaksi()
+                    print()
                     return True
                 else:
                     print("\nPerubahan dibatalkan.\n")
                     return False
-                    
             except ValueError:
-                print("Gagal memperbarui transaksi, Input tidak valid.")
-        else:
-            print("Nomor transaksi yang dimasukkan tidak valid!\n")
+                print("\nGagal memperbarui transaksi, Input tidak valid.\n")
+        elif not transaksi:
+            print("\nBelum ada transaksi yang tersedia untuk diubah.\n")
+            return False
+        print("\nNomor transaksi yang dimasukkan tidak valid!\n")

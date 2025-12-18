@@ -6,10 +6,12 @@ def validasi_input_transaksi(input_validasi, nilai_saat_ini=None, tipe_data=str)
             return nilai_saat_ini
         
         if tipe_data == str:
-            if masukkan_input.isdigit():
-                print("\nMaaf, field ini harus berupa teks!\n")                                                
+            try:
+                float(masukkan_input)
+                print("\nMaaf, field ini harus berupa teks!\n")
                 continue
-            return masukkan_input.capitalize()
+            except ValueError:
+                return masukkan_input.capitalize()
         elif tipe_data == int:
             try:
                 return int(masukkan_input)
