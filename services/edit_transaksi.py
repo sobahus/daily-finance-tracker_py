@@ -9,7 +9,7 @@ def edit_transaksi():
         try:
             nomor = int(input("Masukkan nomor transaksi yang ingin diubah : "))
         except ValueError:
-            print(f"Maaf, field ini tidak boleh kosong dan harus berupa angka.\n")
+            print(f"Maaf, Bagian ini tidak boleh kosong dan harus berupa angka.\n")
             continue
         
         if 0 < nomor <= len(transaksi):
