@@ -1,50 +1,13 @@
 from data.storage import transaksi, daftar_kategori
+from utils.validasi_input import validasi_input_transaksi
 
 def tambah_transaksi():
-    while True:
-        input_kategori = input("Masukkan Kategori: ").capitalize()
-        
-        if input_kategori:
-            break
-        print("Maaf, field kategori tidak boleh kosong.")
-
-    while True:
-        try:
-            input_item = input("Masukkan nama Barang/Item: ").capitalize()
-            
-            if input_item:
-                break
-            print("Maaf, field item tidak boleh kosong.")
-        except ValueError:
-            print("Maaf, field item tidak boleh kosong.")
-        
-    while True:
-        try:
-            input_jumlah = int(input("Masukkan Jumlah: "))
-            
-            if input_jumlah > 0:
-                break
-            print(f"Maaf, jumlah harus lebih dari {input_jumlah}")
-        except ValueError:
-            print("Maaf, field harus berupa angka desimal dan tidak boleh kosong.")
-            
-    while True:
-        try:
-            input_harga = int(input("Masukkan Harga: "))
-            
-            if input_harga > 0:
-                break
-            print(f"Maaf, harga harus lebih dari {input_harga}")
-        except ValueError:
-            print("Maaf, field harus berupa angka desimal dan tidak boleh kosong.")
-
-    while True:
-        input_tanggal = input("Masukkan Tanggal (format: DD-MM-YYYY): ")
-        
-        if input_tanggal:
-            break
-        print("Maaf, field tanggal tidak boleh kosong.")
-
+    input_kategori = validasi_input_transaksi("Masukkan Kategori: ", tipe_data=str)
+    input_item = validasi_input_transaksi("Masukkan nama Barang/Item: ", tipe_data=str)
+    input_jumlah = validasi_input_transaksi("Masukkan Jumlah: ", tipe_data=int)
+    input_harga = validasi_input_transaksi("Masukkan Harga: ", tipe_data=int)
+    input_tanggal = validasi_input_transaksi("Masukkan Tanggal (format: DD-MM-YYYY): ", tipe_data=str)
+    
     try:
         transaksi.append({
             "kategori": input_kategori,

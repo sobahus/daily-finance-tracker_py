@@ -1,24 +1,6 @@
 from data.storage import transaksi
 from services.tampilan_transaksi import tampilan_transaksi
-    
-def validasi_input_transaksi(input_validasi, nilai_saat_ini, tipe_data=str):
-    while True:
-        masukkan_input = input(f"{input_validasi} (tekan Enter untuk tetap menyimpan data lama) :")
-        
-        if masukkan_input == "":
-            return nilai_saat_ini
-        
-        if tipe_data == str:
-            if masukkan_input.isdigit():
-                print("\nMaaf, field ini harus berupa teks!\n")                                                
-                continue
-            return masukkan_input.capitalize()
-        elif tipe_data == int:
-            try:
-                return int(masukkan_input)
-            except ValueError:
-                print("\nMaaf, field ini harus berupa angka!\n")
-                continue              
+from utils.validasi_input import validasi_input_transaksi
     
 def edit_transaksi():
     tampilan_transaksi()
@@ -32,12 +14,17 @@ def edit_transaksi():
         
         if 0 < nomor <= len(transaksi):
             index = nomor - 1
+            kategori = transaksi[index]["kategori"]
+            item = transaksi[index]["item"]
+            jumlah = transaksi[index]["jumlah"]
+            harga = transaksi[index]["harga"]
+            tanggal = transaksi[index]["tanggal"]
             
-            kategori_baru = validasi_input_transaksi("Masukkan kategori baru", transaksi[index]["kategori"]).capitalize()
-            item_baru = validasi_input_transaksi("Masukkan item baru", transaksi[index]["item"]).capitalize()
-            jumlah_baru = validasi_input_transaksi("Jumlah baru", transaksi[index]["jumlah"], int)
-            harga_baru = validasi_input_transaksi("Harga satuan baru", transaksi[index]["harga"], int)
-            tanggal_baru = validasi_input_transaksi("Masukkan tanggal baru (DD-MM-YYYY)", transaksi[index]["tanggal"])
+            kategori_baru = validasi_input_transaksi("Masukkan kategori baru (tekan Enter untuk tetap menyimpan data lama) : ", kategori).capitalize()
+            item_baru = validasi_input_transaksi("Masukkan item baru (tekan Enter untuk tetap menyimpan data lama) : ", item).capitalize()
+            jumlah_baru = validasi_input_transaksi("Jumlah baru (tekan Enter untuk tetap menyimpan data lama) : ", jumlah, int)
+            harga_baru = validasi_input_transaksi("Harga satuan baru (tekan Enter untuk tetap menyimpan data lama) : ", harga, int)
+            tanggal_baru = validasi_input_transaksi("Masukkan tanggal baru (DD-MM-YYYY) (tekan Enter untuk tetap menyimpan data lama) : ", tanggal)
             konfirmasi = input("Apakah yakin ingin mengubah transaksi ini? (y/n): ")
             
             try:
