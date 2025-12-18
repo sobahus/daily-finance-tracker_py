@@ -9,24 +9,30 @@ def hapus_transaksi():
     while True:
         try:
             nomor = int(input("Masukkan nomor dari Daftar Transaksi yang ingin dihapus: "))
+            if not transaksi:
+                print("Belum ada transaksi yang tersedia untuk dihapus.\n")
+                return False
+    
+            if nomor >= 1 and nomor <= len(transaksi):
+                indeks = nomor - 1
+                kategori_target = transaksi[indeks]["kategori"]
+                konfirmasi = input(f"Apakah Anda yakin ingin menghapus transaksi nomor {nomor}? (y/n): ").lower()
+                
+                if konfirmasi == 'y':
+                    cek_sisa_kategori = any(trx["kategori"] == kategori_target for trx in transaksi)
+                    transaksi.pop(indeks) 
+                    
+                    if not cek_sisa_kategori:
+                        daftar_kategori.discard(kategori_target)
+                    tampilan_transaksi()
+                    print(f"\nKategori: {kategori_target} dari Daftar Transaksi Telah berhasil dihapus.\n")
+                    return True
+                else:
+                    print(f"\nPengahapusan transaksi nomor {nomor} dibatalkan.\n")
+                    return False
+
+            else:
+                print("Nomor tidak valid, silahkan coba lagi.\n")
         except ValueError:
             print("Field ini tidak boleh kosong dan harus berupa angka!\n")
-            continue
-        
-        if nomor >= 1 and nomor <= len(transaksi):
-            kategori_dihapus = transaksi[nomor - 1]['kategori']
-            konfirmasi = input(f"Apakah Anda yakin ingin menghapus transaksi nomor {nomor}? (y/n): ").lower()
-            
-            if konfirmasi != 'y':
-                print(f"\nPengahapusan transaksi nomor {nomor} dibatalkan.\n")
-                return False
-            else:
-                del transaksi[nomor - 1]
-                daftar_kategori.remove(kategori_dihapus)
-                print(f"kategori: {kategori_dihapus} dari Daftar Transaksi Telah berhasil dihapus.\n")
-                
-                tampilan_transaksi()
-                return True
-        else:
-            print("Nomor tidak valid, silahkan coba lagi.\n")
                 

@@ -4,22 +4,20 @@ from services.tampilan_transaksi import tampilan_transaksi
 def validasi_input_transaksi(input_validasi, nilai_saat_ini, tipe_data=str):
     while True:
         input_validasi = input(f"{input_validasi}baru (tekan Enter untuk tetap menyimpan data lama) :")
-        user_input = input_validasi.strip()
         
-        if user_input == "":
+        if input_validasi == "":
             return nilai_saat_ini
         else:
             try:
                 if tipe_data == int:
-                    return int(user_input)
+                    return int(input_validasi)
                 else:
-                    return user_input
+                    return input_validasi
                 
             except ValueError:
                 print("Input tidak valid!")
     
 def edit_transaksi():
-    
     tampilan_transaksi()
     
     while True:
@@ -32,8 +30,8 @@ def edit_transaksi():
         if 0 < nomor <= len(transaksi):
             index = nomor - 1
             
-            kategori_baru = validasi_input_transaksi("Masukkan kategori ", transaksi[index]["kategori"])
-            item_baru = validasi_input_transaksi("Masukkan item ", transaksi[index]["item"])
+            kategori_baru = validasi_input_transaksi("Masukkan kategori ", transaksi[index]["kategori"]).capitalize()
+            item_baru = validasi_input_transaksi("Masukkan item ", transaksi[index]["item"]).capitalize()
             jumlah_baru = validasi_input_transaksi("Jumlah ", transaksi[index]["jumlah"], int)
             harga_baru = validasi_input_transaksi("Harga satuan ", transaksi[index]["harga"], int)
             tanggal_baru = validasi_input_transaksi("Masukkan tanggal DD-MM-YYYY ", transaksi[index]["tanggal"])
@@ -65,3 +63,5 @@ def edit_transaksi():
                     
             except ValueError:
                 print("Gagal memperbarui transaksi, Input tidak valid.")
+        else:
+            print("Nomor transaksi yang dimasukkan tidak valid!\n")

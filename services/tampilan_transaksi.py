@@ -2,6 +2,7 @@ from data.storage import transaksi
 
 def tampilan_transaksi():
     kategori = ["Kategori", "item", "Jumlah", "Harga Satuan", "Total", "Tanggal"]
+
     list_total_per_item = []
 
     print("============================ Daftar Transaksi ==================================\n")
