@@ -8,6 +8,11 @@ def tampilan_per_kategori():
     print("\n======= Transaksi per Kategori ========\n")
     
     for ktx in sorted(daftar_kategori):
+        item_dalam_kategori = [trx for trx in transaksi if trx["kategori"] == ktx]
+        
+        if not item_dalam_kategori:
+            continue
+        
         print(f"- {ktx}")
         
         for trx in transaksi:

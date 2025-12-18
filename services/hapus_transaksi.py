@@ -16,6 +16,7 @@ def hapus_transaksi():
             if nomor >= 1 and nomor <= len(transaksi):
                 indeks = nomor - 1
                 kategori_target = transaksi[indeks]["kategori"]
+                kategori_item = transaksi[indeks]["item"]
                 konfirmasi = input(f"Apakah Anda yakin ingin menghapus transaksi nomor {nomor}? (y/n): ").lower()
                 
                 if konfirmasi == 'y':
@@ -24,8 +25,12 @@ def hapus_transaksi():
                     
                     if not cek_sisa_kategori:
                         daftar_kategori.discard(kategori_target)
+                        print(f"\nKategori: {kategori_target} telah dihapus dari Daftar Kategori karena tidak ada transaksi tersisa di kategori tersebut.\n")
+                        
                     tampilan_transaksi()
-                    print(f"\nKategori: {kategori_target} dari Daftar Transaksi Telah berhasil dihapus.\n")
+                    print(f"\nKategori  : {kategori_target}")
+                    print(f"Item      : {kategori_item} \n")
+                    print(f"Transaksi pada nomor {nomor} telah berhasil dihapus.\n")
                     return True
                 else:
                     print(f"\nPengahapusan transaksi nomor {nomor} dibatalkan.\n")

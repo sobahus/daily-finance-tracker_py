@@ -3,19 +3,22 @@ from services.tampilan_transaksi import tampilan_transaksi
     
 def validasi_input_transaksi(input_validasi, nilai_saat_ini, tipe_data=str):
     while True:
-        input_validasi = input(f"{input_validasi}baru (tekan Enter untuk tetap menyimpan data lama) :")
+        masukkan_input = input(f"{input_validasi} (tekan Enter untuk tetap menyimpan data lama) :")
         
-        if input_validasi == "":
+        if masukkan_input == "":
             return nilai_saat_ini
-        else:
+        
+        if tipe_data == str:
+            if masukkan_input.isdigit():
+                print("\nMaaf, field ini harus berupa teks!\n")                                                
+                continue
+            return masukkan_input.capitalize()
+        elif tipe_data == int:
             try:
-                if tipe_data == int:
-                    return int(input_validasi)
-                else:
-                    return input_validasi
-                
+                return int(masukkan_input)
             except ValueError:
-                print("Input tidak valid!")
+                print("\nMaaf, field ini harus berupa angka!\n")
+                continue              
     
 def edit_transaksi():
     tampilan_transaksi()
@@ -30,35 +33,28 @@ def edit_transaksi():
         if 0 < nomor <= len(transaksi):
             index = nomor - 1
             
-            kategori_baru = validasi_input_transaksi("Masukkan kategori ", transaksi[index]["kategori"]).capitalize()
-            item_baru = validasi_input_transaksi("Masukkan item ", transaksi[index]["item"]).capitalize()
-            jumlah_baru = validasi_input_transaksi("Jumlah ", transaksi[index]["jumlah"], int)
-            harga_baru = validasi_input_transaksi("Harga satuan ", transaksi[index]["harga"], int)
-            tanggal_baru = validasi_input_transaksi("Masukkan tanggal DD-MM-YYYY ", transaksi[index]["tanggal"])
+            kategori_baru = validasi_input_transaksi("Masukkan kategori baru", transaksi[index]["kategori"]).capitalize()
+            item_baru = validasi_input_transaksi("Masukkan item baru", transaksi[index]["item"]).capitalize()
+            jumlah_baru = validasi_input_transaksi("Jumlah baru", transaksi[index]["jumlah"], int)
+            harga_baru = validasi_input_transaksi("Harga satuan baru", transaksi[index]["harga"], int)
+            tanggal_baru = validasi_input_transaksi("Masukkan tanggal baru (DD-MM-YYYY)", transaksi[index]["tanggal"])
             konfirmasi = input("Apakah yakin ingin mengubah transaksi ini? (y/n): ")
             
             try:
-                if kategori_baru != "":
-                    transaksi[index]["kategori"] = kategori_baru
-                
-                if item_baru != "":
-                    transaksi[index]["item"] = item_baru
-                
-                if jumlah_baru != "":
-                    transaksi[index]["jumlah"] = jumlah_baru
-
-                if harga_baru != "":
-                    transaksi[index]["harga"] = harga_baru
-
-                if tanggal_baru != "":
-                    transaksi[index]["tanggal"] = tanggal_baru
-                
                 if konfirmasi.lower() == 'y':
+                    transaksi[index].update({
+                        "kategori": kategori_baru,
+                        "item": item_baru,
+                        "jumlah": jumlah_baru,
+                        "harga": harga_baru,
+                        "tanggal": tanggal_baru
+                    })
+                    
                     print("\nTransaksi berhasil diperbarui.\n")
                     tampilan_transaksi()
                     return True
                 else:
-                    print("Perubahan dibatalkan.")
+                    print("\nPerubahan dibatalkan.\n")
                     return False
                     
             except ValueError:
