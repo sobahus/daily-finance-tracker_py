@@ -39,5 +39,5 @@ def hapus_transaksi():
             else:
                 print("Nomor tidak valid, silahkan coba lagi.\n")
         except ValueError:
-            print("Field ini tidak boleh kosong dan harus berupa angka!\n")
+            print("Bagian ini tidak boleh kosong dan harus berupa angka!\n")
                 

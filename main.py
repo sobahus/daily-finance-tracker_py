@@ -32,7 +32,7 @@ def main():
         try:
             pilihan = int(input("Pilih Opsi : "))
         except ValueError:
-            print("Field ini tidak boleh kosong dan harus berupa angka!\n")
+            print("Bagian ini tidak boleh kosong dan harus berupa angka!\n")
             continue
             
         match pilihan:
