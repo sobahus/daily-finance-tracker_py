@@ -9,12 +9,12 @@ def validasi_input_transaksi(input_validasi, data_saat_ini=None, tipe_data=str):
                 print("\nField ini tidak boleh kosong!\n")
                 continue
         elif "," in masukkan_input or "." in masukkan_input:
-            print("\nMaaf, field ini tidak boleh mengandung koma (,)\n")
+            print("\nMaaf, bagian ini tidak boleh mengandung koma (,)\n")
             continue
         
         if tipe_data == str:
             if masukkan_input.isdigit():
-                print("\nMaaf, field ini harus berupa teks!\n")
+                print("\nMaaf, bagian ini harus berupa teks!\n")
                 continue
             return masukkan_input.capitalize()
         
@@ -25,5 +25,5 @@ def validasi_input_transaksi(input_validasi, data_saat_ini=None, tipe_data=str):
                     continue
                 return int(masukkan_input)
             except ValueError:
-                print("\nMaaf, field ini harus berupa angka!\n")
+                print("\nMaaf, bagian ini harus berupa angka!\n")
                 continue
