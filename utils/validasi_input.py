@@ -1,20 +1,29 @@
-def validasi_input_transaksi(input_validasi, nilai_saat_ini=None, tipe_data=str):
+def validasi_input_transaksi(input_validasi, data_saat_ini=None, tipe_data=str):
     while True:
         masukkan_input = input(f"{input_validasi}")
         
         if masukkan_input == "":
-            return nilai_saat_ini
+            if data_saat_ini is not None:
+                return data_saat_ini
+            else:
+                print("\nField ini tidak boleh kosong!\n")
+                continue
+        elif "," in masukkan_input or "." in masukkan_input:
+            print("\nMaaf, field ini tidak boleh mengandung koma (,)\n")
+            continue
         
         if tipe_data == str:
-            try:
-                float(masukkan_input)
+            if masukkan_input.isdigit():
                 print("\nMaaf, field ini harus berupa teks!\n")
                 continue
-            except ValueError:
-                return masukkan_input.capitalize()
+            return masukkan_input.capitalize()
+        
         elif tipe_data == int:
             try:
+                if int(masukkan_input) <= 0:
+                    print(f"\nMaaf, angka tidak boleh kurang dari {int(masukkan_input)}\n")
+                    continue
                 return int(masukkan_input)
             except ValueError:
                 print("\nMaaf, field ini harus berupa angka!\n")
-                continue  
+                continue
